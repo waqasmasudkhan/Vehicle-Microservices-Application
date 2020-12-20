@@ -1,6 +1,6 @@
 package com.udacity.pricing.domain.price;
 
-import javax.persistence.Entity;
+
 import java.math.BigDecimal;
 
 /**
