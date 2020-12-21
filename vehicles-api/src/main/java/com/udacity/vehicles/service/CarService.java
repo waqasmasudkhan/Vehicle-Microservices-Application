@@ -1,5 +1,6 @@
 package com.udacity.vehicles.service;
 
+import com.udacity.vehicles.client.maps.MapsClient;
 import com.udacity.vehicles.client.prices.Price;
 import com.udacity.vehicles.client.prices.PriceClient;
 import com.udacity.vehicles.domain.car.Car;
@@ -20,14 +21,16 @@ public class CarService {
 
     private final CarRepository repository;
     private PriceClient priceClient;
+    private MapsClient mapsClient;
 
-    public CarService(CarRepository repository,PriceClient priceClient) {
+    public CarService(CarRepository repository,PriceClient priceClient, MapsClient mapsClient) {
         /**
          * TODO: Add the Maps and Pricing Web Clients you create
          *   in `VehiclesApiApplication` as arguments and set them here.
          */
         this.repository = repository;
         this.priceClient= priceClient;
+        this.mapsClient=mapsClient;
     }
 
     /**
@@ -75,8 +78,7 @@ public class CarService {
          * Note: The Location class file also uses @transient for the address,
          * meaning the Maps service needs to be called each time for the address.
          */
-        car.set
-
+        car.setLocation(mapsClient.getAddress(car.getLocation()));
         return car;
     }
 
