@@ -35,4 +35,6 @@ public class PricingControllerIntegrationTest {
         ResponseEntity<Price> response=this.restTemplate.getForEntity("http://localhost:" + port + "/services/price?vehicleId=3", Price.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
+
+
 }
