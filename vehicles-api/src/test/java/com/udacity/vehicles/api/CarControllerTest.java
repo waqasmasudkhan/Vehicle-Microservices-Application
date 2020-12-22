@@ -135,11 +135,8 @@ public class CarControllerTest {
 
 
 
-        //mvc.perform(get("/cars/1").accept(MediaType.APPLICATION_JSON_UTF8).param("id","1")).andExpect(status().isNoContent());
-        mvc.perform(MockMvcRequestBuilders.delete("/cars/{id}",1)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-        ).andExpect(status().isNoContent());
+        mvc.perform(get("/cars/1").param("id","1").accept(MediaType.APPLICATION_JSON_UTF8).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNoContent());
+
 
     }
 
