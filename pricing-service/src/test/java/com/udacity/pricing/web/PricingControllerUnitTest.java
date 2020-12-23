@@ -32,13 +32,13 @@ public class PricingControllerUnitTest {
 
     @Test
     public void getPrices() throws Exception{
-        mockMvc.perform(get("/services/price").param("vehicleId","3").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON)).andExpect(content().contentType("application/hal+json;charset=UTF-8"));
+        mockMvc.perform(get("/services/price?vehicleId=1").accept(MediaType.APPLICATION_JSON_UTF8)).andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect((content().json("{}")));
         verify(pricingService, times(1)).getPrice(Long.getLong("3"));
     }
 
     @Test
     public void getPriceNotFound() throws Exception{
-        mockMvc.perform(get("/services/price").param("vehicleId","300")).andExpect(status().is(404));
+        mockMvc.perform(get("/services/price").param("vehicleId","300").accept(MediaType.APPLICATION_JSON_UTF8)).andExpect(status().is(404));
         verify(pricingService, times(1)).getPrice(Long.getLong("300"));
     }
 
